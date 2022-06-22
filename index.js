@@ -1,15 +1,30 @@
 const container = document.querySelector('.container');
 
+function createGrid(rows) {
+    const newCell = document.querySelector('.cell');
+    if (newCell !== null) {
+        container.remove();
+    }
+    for (let i = 1; i <= rows*rows; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        container.appendChild(cell);
+        cell.addEventListener('mouseleave', () => {
+            cell.style.backgroundColor = 'grey';
+        })
 
-for (let i = 1; i <= 16*16; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    container.appendChild(cell);
+    }
 }
+createGrid(16);
 
-const cells = document.querySelectorAll('.cell');
-cells.forEach((cell) => {
-    cell.addEventListener('mouseover', () => {
-        cell.style.backgroundColor = 'grey';
-    })
-})
+const gridBtn = document.querySelector('button');
+gridBtn.addEventListener('click', () => {newGrid()})
+
+function newGrid() {
+    const size = parseInt(prompt('Enter row number for the new grid'));
+    if (isNaN(size)) {
+        alert('Only enter a number');
+        return;
+    }
+    createGrid(size);
+}

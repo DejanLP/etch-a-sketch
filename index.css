@@ -41,3 +41,9 @@ img {
     background-color: white;
 
 }
+
+.wrapper{
+    display: flex;
+    gap: 48px;
+    align-items: center;
+}

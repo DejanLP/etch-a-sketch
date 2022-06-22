@@ -26,3 +26,15 @@ img {
     height: 24px;
     margin-left: 5px;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(16, auto);
+    grid-template-rows: repeat(16, auto);
+}
+
+.cell {
+    width: 24px;
+    height: 24px;
+    border: 1px solid black;
+}

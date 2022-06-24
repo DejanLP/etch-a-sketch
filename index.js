@@ -1,21 +1,23 @@
 const container = document.querySelector('.container');
 
-function createGrid(rows) {
+
+function createGrid(rows, columns) {
     const newCell = document.querySelector('.cell');
     if (newCell !== null) {
-        container.remove();
+        container.style.setProperty('--rows', rows);
+        container.style.setProperty('--columns', columns);
     }
-    for (let i = 1; i <= rows*rows; i++) {
+    for (let i = 1; i <= rows*columns; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         container.appendChild(cell);
-        cell.addEventListener('mouseleave', () => {
+        cell.addEventListener('mouseenter', () => {
             cell.style.backgroundColor = 'grey';
         })
 
     }
 }
-createGrid(16);
+createGrid(16, 16);
 
 const gridBtn = document.querySelector('button');
 gridBtn.addEventListener('click', () => {newGrid()})
@@ -26,5 +28,5 @@ function newGrid() {
         alert('Only enter a number');
         return;
     }
-    createGrid(size);
+    createGrid(size, size);
 }

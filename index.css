@@ -28,18 +28,21 @@ img {
 }
 
 .container {
+    --rows: 16;
+    --columns: 16;
     display: grid;
-    grid-template-columns: repeat(16, auto);
+    height: 500px;
+    width: 500px;
+    grid-template-columns: repeat(var(--rows), 1fr);
+    grid-template-rows: repeat(var(--columns), 1fr);
     background-color: black;
-    grid-gap: 1px;
     padding: 1px;
 }
 
 .cell {
-    width: 24px;
-    height: 24px;
     background-color: white;
-
+    height: auto;
+    width: auto;
 }
 
 .wrapper{

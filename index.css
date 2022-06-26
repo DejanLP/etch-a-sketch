@@ -6,6 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    gap: 16px;
 }
 
 .footer {
@@ -27,12 +28,58 @@ img {
     margin-left: 5px;
 }
 
+#red {
+    background-color: red;
+}
+#blue {
+    background-color: blue;
+}
+#purple {
+    background-color: purple;
+}
+#white {
+    background-color: white;
+}
+#black {
+    background-color: black;
+}
+#green {
+    background-color: green;
+}
+#yellow {
+    background-color: yellow;
+}
+#orange {
+    background-color: orange;
+}
+
+
+
+.colorBtn {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.colors{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .container {
     --rows: 16;
     --columns: 16;
     display: grid;
     height: 500px;
     width: 500px;
+    /* 1fr to fit the whole container div, depending on row/column number*/
     grid-template-columns: repeat(var(--rows), 1fr);
     grid-template-rows: repeat(var(--columns), 1fr);
     background-color: black;

@@ -1,25 +1,39 @@
 body{
     font-family: 'Barlow Condensed', sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    gap: 16px;
+    padding: 20px;
+    background: #00b4db; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00b4db, #0083b0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00b4db, #0083b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.footer {
+.container {
+    gap: 24px;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 50px;
+    margin-top: 2%;
+}
+
+.flex-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 footer{
     margin-top: auto;
-    margin-bottom: 20px;
+    color: #FFFFFF;
+    margin-bottom: 40px;
 }
 
 img {
@@ -53,27 +67,23 @@ img {
     background-color: orange;
 }
 
-
-
 .colorBtn {
     padding: 10px 20px;
     border-radius: 5px;
+    border: 1px solid black;
+    width: 50px;
 }
 
 .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 16px;
 }
 
 .colors{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    gap: 4px;
+    width: 200px;
 }
 
-.container {
+.sketch {
     --rows: 16;
     --columns: 16;
     display: grid;
@@ -92,8 +102,10 @@ img {
     width: auto;
 }
 
+#h4 {
+    margin-bottom: 5px;
+}
+
 .wrapper{
-    display: flex;
     gap: 48px;
-    align-items: center;
 }

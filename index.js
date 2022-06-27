@@ -1,10 +1,18 @@
-const container = document.querySelector('.container');
+/**
+ * ==========================================================
+ *                          Init page
+ * ==========================================================
+ */
 
 //default grid creation 
+const container = document.querySelector('.sketch');
 createGrid(16, 16);
 
-const gridBtn = document.querySelector('#size');
-gridBtn.addEventListener('click', () => {newGrid()})
+/**
+ * ==========================================================
+ *                     Listening for events
+ * ==========================================================
+ */
 
 //listen for correct color
 let color = 'grey';
@@ -12,12 +20,24 @@ const colorBtns = document.querySelectorAll('.colorBtn');
 colorBtns.forEach((colorBtn) => {
     colorBtn.addEventListener('click', () => {
         color = colorBtn.value;
+        const currentlySelected = document.querySelector('.colors div');
+        currentlySelected.innerText = `Currently selected: ${color}`;
     })
 })
 
 //delete grid on click
 const deleteBtn = document.querySelector('#delete');
 deleteBtn.addEventListener('click', () => {resetGrid()});
+
+//create new grid on click
+const gridBtn = document.querySelector('#size');
+gridBtn.addEventListener('click', () => {newGrid()})
+
+/**
+ * ==========================================================
+ *                          Methods
+ * ==========================================================
+ */
 
 //Create a new grid and add Listeners for hover events
 function createGrid(rows, columns) {

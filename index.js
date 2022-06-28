@@ -19,11 +19,8 @@ let color = 'black';
 const colorBtns = document.querySelectorAll('.colorBtn');
 colorBtns.forEach((colorBtn) => {
     colorBtn.addEventListener('click', () => {
-        color = colorBtn.value;
-        //Remove class for all buttons, and add only for clicked one, on each click
-        colorBtns.forEach((id) => {
-            id.classList.remove('highlighted');
-        })
+        swapMode('color', colorBtn);
+        removeHighlight();
         colorBtn.classList.add('highlighted');
     })
 })
@@ -35,6 +32,13 @@ deleteBtn.addEventListener('click', () => {resetGrid()});
 //create new grid on click
 const gridBtn = document.querySelector('#size');
 gridBtn.addEventListener('click', () => {newGrid()})
+
+//rainbow mode
+const rainbow = document.querySelector('#rainbow');
+rainbow.addEventListener('click', () => {
+    removeHighlight();
+    swapMode('rainbow');
+});
 
 /**
  * ==========================================================
@@ -85,4 +89,34 @@ function resetGrid() {
     cells.forEach(((cell) => {
         cell.style.backgroundColor = 'white';
     }))
+}
+
+function swapMode(mode, colorBtn) {
+    const cells = document.querySelectorAll('.cell');
+    if(mode == 'color'){
+        cells.forEach((cell) => {
+            cell.addEventListener('mouseenter', () => {
+                color = colorBtn.value;
+                })
+        })
+    }
+    if(mode == 'rainbow') {
+        cells.forEach((cell) => {
+            cell.addEventListener('mouseenter', () => {
+                color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+                })
+        })
+    }
+}
+
+//Remove class for all buttons, and add only for clicked one, on each click
+function removeHighlight() {
+    colorBtns.forEach((id) => {
+        id.classList.remove('highlighted');
+    })
+}
+
+//rainbow mode
+function random(number) {
+    return Math.floor(Math.random() * (number + 1));
 }

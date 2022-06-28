@@ -94,14 +94,20 @@ function resetGrid() {
 function swapMode(mode, colorBtn) {
     const cells = document.querySelectorAll('.cell');
     if(mode == 'color'){
+        //set color directly for the first cell
+        color = colorBtn.value;
         cells.forEach((cell) => {
+            //needed in order to overwrite existing eventListeners
             cell.addEventListener('mouseenter', () => {
                 color = colorBtn.value;
                 })
         })
     }
     if(mode == 'rainbow') {
+        //set color directly for the first cell
+        color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
         cells.forEach((cell) => {
+            //needed in order to overwrite existing eventListeners
             cell.addEventListener('mouseenter', () => {
                 color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
                 })

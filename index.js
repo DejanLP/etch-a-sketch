@@ -15,13 +15,16 @@ createGrid(16, 16);
  */
 
 //listen for correct color
-let color = 'grey';
+let color = 'black';
 const colorBtns = document.querySelectorAll('.colorBtn');
 colorBtns.forEach((colorBtn) => {
     colorBtn.addEventListener('click', () => {
         color = colorBtn.value;
-        const currentlySelected = document.querySelector('.colors div');
-        currentlySelected.innerText = `Currently selected: ${color}`;
+        //Remove class for all buttons, and add only for clicked one, on each click
+        colorBtns.forEach((id) => {
+            id.classList.remove('highlighted');
+        })
+        colorBtn.classList.add('highlighted');
     })
 })
 

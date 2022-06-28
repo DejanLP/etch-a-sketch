@@ -13,7 +13,6 @@ body{
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 50px;
-    margin-top: 2%;
 }
 
 .flex-row {
@@ -78,6 +77,10 @@ img {
     gap: 16px;
 }
 
+.highlighted {
+    border: 1px solid rgb(30, 255, 0);
+}
+
 .colors{
     gap: 4px;
     width: 200px;
@@ -87,8 +90,8 @@ img {
     --rows: 16;
     --columns: 16;
     display: grid;
-    height: 500px;
-    width: 500px;
+    height: 450px;
+    width: 450px;
     /* 1fr to fit the whole container div, depending on row/column number*/
     grid-template-columns: repeat(var(--rows), 1fr);
     grid-template-rows: repeat(var(--columns), 1fr);
@@ -104,6 +107,11 @@ img {
 
 #h4 {
     margin-bottom: 5px;
+}
+
+#page-title {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .wrapper{

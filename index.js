@@ -63,13 +63,17 @@ function createGrid(rows, columns) {
 
 //Ask the user to create a new grid
 function newGrid() {
-    const size = parseInt(prompt('Enter row number for the new grid'));
+    const size = parseInt(prompt('Enter row number for the new grid (max: 100)'));
     if (isNaN(size)) {
         alert('Only enter a number');
         return;
     }
     else if (size > 100) {
         alert('The max. row number is 100');
+        return;
+    }
+    else if (size < 0) {
+        alert('The row number needs to be positive');
         return;
     }
     createGrid(size, size);

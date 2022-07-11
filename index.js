@@ -6,6 +6,10 @@
 
 //default grid creation 
 const container = document.querySelector('.sketch');
+let mode = 'color';
+
+let color = 'black';
+
 createGrid(16, 16);
 
 /**
@@ -15,7 +19,6 @@ createGrid(16, 16);
  */
 
 //listen for correct color
-let color = 'black';
 const colorBtns = document.querySelectorAll('.colorBtn');
 colorBtns.forEach((colorBtn) => {
     colorBtn.addEventListener('click', () => {
@@ -30,8 +33,16 @@ const deleteBtn = document.querySelector('#delete');
 deleteBtn.addEventListener('click', () => {resetGrid()});
 
 //create new grid on click
+let newSize = false;
+
 const gridBtn = document.querySelector('#size');
-gridBtn.addEventListener('click', () => {newGrid()})
+gridBtn.addEventListener('click', () => {
+    newGrid();
+    const blackBtn = document.querySelector('#black');
+        swapMode('color', blackBtn);
+        removeHighlight();
+        blackBtn.classList.add('highlighted');
+})
 
 //rainbow mode
 const rainbow = document.querySelector('#rainbow');
@@ -57,11 +68,10 @@ function createGrid(rows, columns) {
     for (let i = 1; i <= rows*columns; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        container.appendChild(cell);
         cell.addEventListener('mouseenter', () => {
             cell.style.backgroundColor = color;
         })
-
+        container.appendChild(cell);
     }
 }
 
@@ -85,22 +95,22 @@ function newGrid() {
 
 //sets all cells back to white background
 function resetGrid() {
-    const cells = document.querySelectorAll('.cell');
+    cells = getCells();
     cells.forEach(((cell) => {
         cell.style.backgroundColor = 'white';
     }))
 }
 
 function swapMode(mode, colorBtn) {
-    const cells = document.querySelectorAll('.cell');
+    cells = getCells();
     if(mode == 'color'){
         //set color directly for the first cell
         color = colorBtn.value;
         cells.forEach((cell) => {
             //needed in order to overwrite existing eventListeners
-            cell.addEventListener('mouseenter', () => {
-                color = colorBtn.value;
-                })
+            cell.addEventListener('mouseover', () => {
+                    color = colorBtn.value;
+            })
         })
     }
     if(mode == 'rainbow') {
@@ -108,9 +118,11 @@ function swapMode(mode, colorBtn) {
         color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
         cells.forEach((cell) => {
             //needed in order to overwrite existing eventListeners
-            cell.addEventListener('mouseenter', () => {
-                color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
-                })
+            cell.addEventListener('mouseover', () => {
+                if(!newSize) {
+                    color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+                }
+            })
         })
     }
 }
@@ -125,4 +137,8 @@ function removeHighlight() {
 //rainbow mode
 function random(number) {
     return Math.floor(Math.random() * (number + 1));
+}
+
+function getCells() {
+    return document.querySelectorAll('.cell');
 }
